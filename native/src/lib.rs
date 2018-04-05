@@ -113,7 +113,6 @@ fn s_object(buffer: &mut ByteBuffer, value: Handle<JsObject>, scope: &mut RootSc
     buffer.write_u32(len);
     for idx in 0..len {
       let key = keys.get(scope, idx).unwrap().downcast::<JsString>().unwrap().value();
-      println!("{:?}", key);
       buffer.write_string(&key);
       s_value(buffer, value.get(scope, key.as_str()).unwrap(), scope);
     }
