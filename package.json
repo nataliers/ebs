@@ -1,11 +1,11 @@
 {
-  "name": "ebs",
+  "name": "embers",
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:nataliers/ebs.git"
+    "url": "git@github.com:nataliers/embers.git"
   },
   "author": "Michał Żaloudik <ponury.kostek@gmail.com>",
   "license": "MIT",

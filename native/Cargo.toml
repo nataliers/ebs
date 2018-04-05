@@ -1,12 +1,12 @@
 [package]
-name = "ebs"
+name = "embers"
 version = "0.0.1"
 authors = ["Michał Żaloudik <ponury.kostek@gmail.com>"]
 license = "MIT"
 build = "build.rs"
 
 [lib]
-name = "ebs"
+name = "embers"
 crate-type = ["dylib"]
 
 [build-dependencies]
