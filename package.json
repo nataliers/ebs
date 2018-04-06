@@ -1,6 +1,6 @@
 {
   "name": "embers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "repository": {
@@ -10,6 +10,7 @@
   "author": "Michał Żaloudik <ponury.kostek@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "benchmark": "^2.1.4",
     "neon-cli": "^0.1.22"
   },
   "scripts": {

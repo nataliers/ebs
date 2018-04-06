@@ -1,0 +1,10 @@
+pub const T_NULL: u8 = 1;
+pub const T_FALSE: u8 = T_NULL + 1;
+pub const T_TRUE: u8 = T_NULL + 2;
+pub const T_EARRAY: u8 = T_NULL + 4;
+pub const T_EOBJECT: u8 = T_NULL + 5;
+pub const T_INTEGER: u8 = T_NULL + 6;
+pub const T_NUMBER: u8 = T_NULL + 7;
+pub const T_STRING: u8 = T_NULL + 8;
+pub const T_ARRAY: u8 = T_NULL + 9;
+pub const T_OBJECT: u8 = T_NULL + 10;
