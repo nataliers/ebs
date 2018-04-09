@@ -18,6 +18,10 @@ mod deserialize;
 
 use deserialize::deserialize;
 
+mod clone;
+
+use clone::clone;
+
 pub fn echo(call: Call) -> JsResult<JsValue> {
   let scope = call.scope;
   let value = call.arguments.get(scope, 0).unwrap();
@@ -28,5 +32,6 @@ register_module!(m, {
   m.export("serialize", serialize);
   m.export("deserialize", deserialize);
   m.export("echo", echo);
+  m.export("clone", clone);
   Ok(())
 });

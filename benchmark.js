@@ -46,6 +46,9 @@ const buffers = [];
 for (let i = 0; i < length; i++) {
 	buffers.push(embers.serialize(values[i]));
 }
+for (let i = 0; i < length; i++) {
+	embers.clone(values[i]);
+}
 suite.add("JSON.stringify", function () {
 	for (let i = 0; i < length; i++) {
 		JSON.stringify(values[i]);
@@ -58,6 +61,10 @@ suite.add("JSON.stringify", function () {
 	for (let i = 0; i < length; i++) {
 		embers.echo(values[i]);
 	}
+}).add("embers.clone", function () {
+	for (let i = 0; i < length; i++) {
+		embers.clone(values[i]);
+	}
 }).add("JSON.parse", function () {
 	for (let i = 0; i < length; i++) {
 		JSON.parse(strings[i]);
@@ -65,10 +72,6 @@ suite.add("JSON.stringify", function () {
 }).add("embers.deserialize", function () {
 	for (let i = 0; i < length; i++) {
 		embers.deserialize(buffers[i]);
-	}
-}).add("embers.echo", function () {
-	for (let i = 0; i < length; i++) {
-		embers.echo(buffers[i]);
 	}
 }).on("cycle", function (event) {
 	console.log(String(event.target));
