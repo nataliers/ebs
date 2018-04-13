@@ -10,10 +10,13 @@
   "author": "Michał Żaloudik <ponury.kostek@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "benchmark": "^2.1.4",
     "neon-cli": "^0.1.22"
   },
   "scripts": {
     "install": "neon build"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "fast.js": "^0.1.1"
   }
 }

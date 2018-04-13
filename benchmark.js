@@ -49,6 +49,11 @@ for (let i = 0; i < length; i++) {
 for (let i = 0; i < length; i++) {
 	embers.clone(values[i]);
 }
+
+function echo(value) {
+	return value;
+}
+
 suite.add("JSON.stringify", function () {
 	for (let i = 0; i < length; i++) {
 		JSON.stringify(values[i]);
@@ -60,6 +65,10 @@ suite.add("JSON.stringify", function () {
 }).add("embers.echo", function () {
 	for (let i = 0; i < length; i++) {
 		embers.echo(values[i]);
+	}
+}).add("native echo", function () {
+	for (let i = 0; i < length; i++) {
+		echo(values[i]);
 	}
 }).add("embers.clone", function () {
 	for (let i = 0; i < length; i++) {

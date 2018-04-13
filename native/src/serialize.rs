@@ -79,12 +79,12 @@ fn s_array(buffer: &mut ByteBuffer, value: Handle<JsArray>, scope: &mut RootScop
   let len = value.len();
   if len == 0 {
     buffer.write_u8(T_EARRAY);
-  } else {
-    buffer.write_u8(T_ARRAY);
-    buffer.write_u32(len);
-    for idx in 0..len {
-      s_value(buffer, value.get(scope, idx).unwrap(), scope);
-    }
+    return;
+  }
+  buffer.write_u8(T_ARRAY);
+  buffer.write_u32(len);
+  for idx in 0..len {
+    s_value(buffer, value.get(scope, idx).unwrap(), scope);
   }
 }
 
@@ -93,13 +93,13 @@ fn s_object(buffer: &mut ByteBuffer, value: Handle<JsObject>, scope: &mut RootSc
   let len = keys.len();
   if len == 0 {
     buffer.write_u8(T_EOBJECT);
-  } else {
-    buffer.write_u8(T_OBJECT);
-    buffer.write_u32(len);
-    for idx in 0..len {
-      let key = keys.get(scope, idx).unwrap().downcast::<JsString>().unwrap().value();
-      buffer.write_string(&key);
-      s_value(buffer, value.get(scope, key.as_str()).unwrap(), scope);
-    }
+    return;
+  }
+  buffer.write_u8(T_OBJECT);
+  buffer.write_u32(len);
+  for idx in 0..len {
+    let key = keys.get(scope, idx).unwrap().downcast::<JsString>().unwrap().value();
+    buffer.write_string(&key);
+    s_value(buffer, value.get(scope, key.as_str()).unwrap(), scope);
   }
 }
