@@ -14,22 +14,22 @@ pub fn clone(call: Call) -> JsResult<JsValue> {
   Ok(c_value(value, scope))
 }
 
-fn c_value<'a>(value: Handle<JsValue>, scope: &'a mut RootScope) -> Handle<'a, JsValue> {
+fn c_value<'a>(value: Handle<'a, JsValue>, scope: &mut RootScope<'a>) -> Handle<'a, JsValue> {
   match value.variant() {
     Variant::Null(_) => {
-      JsNull::new().upcast::<JsValue>()
+      value
     }
-    Variant::Boolean(value) => {
-      JsBoolean::new(scope, value.value()).upcast::<JsValue>()
+    Variant::Boolean(_) => {
+      value
     }
-    Variant::Integer(value) => {
-      JsInteger::new(scope, value.value() as i32).upcast::<JsValue>()
+    Variant::Integer(_) => {
+      value
     }
-    Variant::Number(value) => {
-      JsNumber::new(scope, value.value()).upcast::<JsValue>()
+    Variant::Number(_) => {
+      value
     }
-    Variant::String(value) => {
-      JsString::new(scope, value.value().as_str()).unwrap().upcast::<JsValue>()
+    Variant::String(_) => {
+      value
     }
     Variant::Array(value) => {
       c_array(value, scope)
@@ -38,12 +38,12 @@ fn c_value<'a>(value: Handle<JsValue>, scope: &'a mut RootScope) -> Handle<'a, J
       c_object(value, scope)
     }
     _ => {
-      JsNull::new().upcast::<JsValue>()
+      value
     }
   }
 }
 
-fn c_array<'a>(value: Handle<JsArray>, scope: &'a mut RootScope) -> Handle<'a, JsValue> {
+fn c_array<'a>(value: Handle<'a, JsArray>, scope: &mut RootScope<'a>) -> Handle<'a, JsValue> {
   let len = value.len();
   let array = JsArray::new(scope, len);
   if len > 0 {
@@ -54,7 +54,7 @@ fn c_array<'a>(value: Handle<JsArray>, scope: &'a mut RootScope) -> Handle<'a, J
   array.upcast::<JsValue>()
 }
 
-fn c_object<'a>(value: Handle<JsObject>, scope: &'a mut RootScope) -> Handle<'a, JsValue> {
+fn c_object<'a>(value: Handle<'a, JsObject>, scope: &mut RootScope<'a>) -> Handle<'a, JsValue> {
   let keys = value.get_own_property_names(scope).unwrap();
   let len = keys.len();
   let object = JsObject::new(scope);
