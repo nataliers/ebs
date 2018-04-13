@@ -1,6 +1,6 @@
 {
   "name": "embers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "repository": {
@@ -14,5 +14,9 @@
   },
   "scripts": {
     "install": "neon build"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "fast.js": "^0.1.1"
   }
 }
